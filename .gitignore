@@ -1,3 +1,10 @@
+# Ignore lock files (for now)
+yarn.lock
+package-lock.json
+
+# Ignore output css
+**/*.css
+
 # Logs
 logs
 *.log
