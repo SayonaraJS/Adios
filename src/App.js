@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Sayonara from './services/sayonara';
+
 
 class App extends Component {
+
+  componentDidMount() {
+    this.setState({
+      siteJson: Sayonara.getSayonaraSite()
+    })
+  }
+
   render() {
     return (
       <div className="App">
