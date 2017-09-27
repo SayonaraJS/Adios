@@ -3,7 +3,7 @@ yarn.lock
 package-lock.json
 
 # Ignore output css
-**/*.css
+src/index.css
 
 # Logs
 logs

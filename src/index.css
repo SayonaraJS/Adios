@@ -1,3 +1,96 @@
+.smq__mobile {
+  display: none; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .smq__mobile {
+      display: block; } }
+
+.smq__tablet {
+  display: none; }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .smq__tablet {
+      display: block; } }
+
+.smq__desktop {
+  display: none; }
+  @media (min-width: 1024px) {
+    .smq__desktop {
+      display: block; } }
+
+.smq__large-desktop {
+  display: none; }
+  @media (min-width: 1440px) {
+    .smq__large-desktop {
+      display: block; } }
+
+.smq__all-mobile {
+  display: none; }
+  @media (max-width: 1024px) {
+    .smq__all-mobile {
+      display: block; } }
+
+.smq__not-mobile {
+  display: none; }
+  @media (min-width: 1024px) {
+    .smq__not-mobile {
+      display: block; } }
+
+.smq__all-desktop {
+  display: none; }
+  @media (min-width: 1024px) {
+    .smq__all-desktop {
+      display: block; } }
+
+.smq__not-desktop {
+  display: none; }
+  @media (max-width: 1024px) {
+    .smq__not-desktop {
+      display: block; } }
+
+.center, .center-text {
+  margin-left: auto;
+  margin-right: auto; }
+
+.center-text {
+  text-align: center; }
+
+.center-children {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.center-children-horizontal {
+  display: flex;
+  justify-content: center; }
+
+.center-children-vertical {
+  display: flex;
+  align-items: center; }
+
+.App {
+  text-align: center; }
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px; }
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: #F9F9F9; }
+
+.App-title {
+  font-size: 1.5em; }
+
+.App-intro {
+  font-size: large; }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
 body {
   margin: 0;
   padding: 0;

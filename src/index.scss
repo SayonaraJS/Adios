@@ -1,3 +1,12 @@
+// Import some sass libs
+@import 'sass-bem-mixins/index.scss';
+@import 'sass-media-queries/index.scss';
+@import 'sass-theme-defaults/index.scss';
+
+// Import our component sass
+@import './App.scss';
+
+
 body {
   margin: 0;
   padding: 0;
