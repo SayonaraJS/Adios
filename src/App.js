@@ -7,20 +7,72 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      siteJson: Sayonara.getSayonaraSite()
+      siteJson: false
+    });
+    Sayonara.getSayonaraSite().then((siteJson) => {
+      this.setState({
+        siteJson
+      });
     })
   }
 
+  // Function to transform titles to # friendly links
+  getHashLinkFromTitle(title, includeHash) {
+    const urlTitle = title.toLowerCase().replace(/\s/g, '-');
+    if(includeHash) {
+      return `#${urlTitle}`
+    }
+    return urlTitle;
+  }
+
   render() {
+    let sayonaraTitle = (
+      <h1 className="App__title">Adios</h1>
+    );
+    let sayonaraEntryLinks = [];
+    let sayonaraEntries = [];
+    if(this.state && this.state.siteJson) {
+      // Set our title in the header
+      sayonaraTitle = (
+        <h1 className="App__title">{this.state.siteJson.siteName}</h1>
+      )
+      this.state.siteJson.pages[0].entryTypes[0].entries.forEach((entry) => {
+        // Add a link to the entry
+        sayonaraEntryLinks.push((
+          <li key={this.getHashLinkFromTitle(entry.title)}>
+            <a href={this.getHashLinkFromTitle(entry.title, true)}>{entry.title}</a>
+          </li>
+        ));
+
+        // Add the section and html
+        sayonaraEntries.push((
+          <section key={this.getHashLinkFromTitle(entry.title)}>
+            <h1 id={this.getHashLinkFromTitle(entry.title)}
+              className="App__entries__entry-title">{entry.title}
+            </h1>
+            <div dangerouslySetInnerHTML={{__html: entry.content}}></div>
+          </section>
+        ))
+      });
+    }
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+        <header className="App__header">
+          <img src={logo} className="App__logo" alt="logo" />
+          {sayonaraTitle}
+          <nav>
+            <ul className="App__header__link-list">
+              {sayonaraEntryLinks}
+            </ul>
+          </nav>
         </header>
-        <p className="App-intro">
+        <p className="App__intro">
+          Welcome the SayonaraJS Client, Adios!
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <main className="App__entries">
+          {sayonaraEntries}
+        </main>
       </div>
     );
   }
