@@ -72,12 +72,15 @@
   to {
     transform: rotate(360deg); } }
 
+.error {
+  color: red; }
+
 .App {
   text-align: center; }
   .App__header {
     flex-wrap: wrap;
     background-color: #222;
-    min-height: 150px;
+    min-height: 50px;
     padding: 20px;
     color: #F9F9F9; }
     .App__header__link-list {

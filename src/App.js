@@ -7,11 +7,16 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      siteJson: false
+      siteJson: false,
+      error: false
     });
     Sayonara.getSayonaraSite().then((siteJson) => {
       this.setState({
         siteJson
+      });
+    }).catch((error) => {
+      this.setState({
+        error: 'Error Getting the Sayonara Public API! Please check the Javascript console. :('
       });
     })
   }
@@ -26,6 +31,16 @@ class App extends Component {
   }
 
   render() {
+    let error;
+
+    if(this.state && this.state.error) {
+      error = (
+        <div className="error">
+          {this.state.error}
+        </div>
+      )
+    }
+
     let sayonaraTitle = (
       <h1 className="App__title">Adios</h1>
     );
@@ -70,6 +85,7 @@ class App extends Component {
           Welcome the SayonaraJS Client, Adios!
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        {error}
         <main className="App__entries">
           {sayonaraEntries}
         </main>

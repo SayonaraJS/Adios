@@ -8,8 +8,7 @@ class SayonaraService {
     this.apiPublicPath = '/api/public';
     this.apiUrl = '//' + document.location.host + this.apiPublicPath;
     if(process.env.NODE_ENV === 'development') {
-      //this.apiUrl = '//' + document.location.hostname + ':8000' + this.apiPublicPath;
-      this.apiUrl = 'https://leahrosegarza.com/api/public';
+      this.apiUrl = '//' + document.location.hostname + ':8000' + this.apiPublicPath;
     }
   }
 
