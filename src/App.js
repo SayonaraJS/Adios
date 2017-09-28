@@ -6,22 +6,26 @@ import Sayonara from './services/sayonara';
 class App extends Component {
 
   componentDidMount() {
+    // Set the initial component state
     this.setState({
       siteJson: false,
       error: false
     });
+    // Make the request to the Sayonara API
     Sayonara.getSayonaraSite().then((siteJson) => {
       this.setState({
         siteJson
       });
     }).catch((error) => {
       this.setState({
-        error: 'Error Getting the Sayonara Public API! Please check the Javascript console. :('
+        error: 'Error Getting the Sayonara Public API! Please check the Javascript console :('
       });
     })
   }
 
   // Function to transform titles to # friendly links
+  // @param title - The string containing the entry title
+  // @param includeHash - True / undefined, wether or not to prepend a hashtag
   getHashLinkFromTitle(title, includeHash) {
     const urlTitle = title.toLowerCase().replace(/\s/g, '-');
     if(includeHash) {
@@ -30,9 +34,10 @@ class App extends Component {
     return urlTitle;
   }
 
+  // Function called to display the DOM
   render() {
+    // Create a div containing our error if we have one
     let error;
-
     if(this.state && this.state.error) {
       error = (
         <div className="error">
@@ -41,16 +46,22 @@ class App extends Component {
       )
     }
 
+    // Initialize our App title and Entries
     let sayonaraTitle = (
       <h1 className="App__title">Adios</h1>
     );
     let sayonaraEntryLinks = [];
     let sayonaraEntries = [];
+
+    // Check if we have the site
     if(this.state && this.state.siteJson) {
+
       // Set our title in the header
       sayonaraTitle = (
         <h1 className="App__title">{this.state.siteJson.siteName}</h1>
       )
+
+      // Iterate through the first (and only) page's first (and only) entryTypes' entries.
       this.state.siteJson.pages[0].entryTypes[0].entries.forEach((entry) => {
         // Add a link to the entry
         sayonaraEntryLinks.push((
@@ -70,6 +81,7 @@ class App extends Component {
         ))
       });
     }
+    // Our final HTML that should be displayed
     return (
       <div className="App">
         <header className="App__header">
