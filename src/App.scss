@@ -26,7 +26,54 @@
       }
       position: relative;
 
+      .bm-burger-button {
+        display: none;
+      }
+
+      .bm-overlay {
+        top: 0;
+        left: 0;
+        background-color: $transparent-50 !important;
+      }
+
+      .bm-menu-wrap {
+        top: 0;
+        left: 0;
+        width: 100% !important;
+      }
+
       @include element('button') {
+      }
+
+      @include element('link-list') {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px;
+
+        @include element('close') {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          font-size: 40px;
+        }
+
+
+        li {
+          list-style: none;
+          text-decoration: none;
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+
+        a {
+          font-size: 24px;
+          color: $inverse;
+          text-decoration: none;
+
+          &:visited {
+            color: $inverse;
+          }
+        }
       }
     }
 

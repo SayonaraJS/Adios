@@ -89,6 +89,36 @@
       @media (min-width: 1024px) {
         .App__header__hamburger {
           display: none; } }
+      .App__header__hamburger .bm-burger-button {
+        display: none; }
+      .App__header__hamburger .bm-overlay {
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5) !important; }
+      .App__header__hamburger .bm-menu-wrap {
+        top: 0;
+        left: 0;
+        width: 100% !important; }
+      .App__header__hamburger__link-list {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px; }
+        .App__header__hamburger__link-list__close {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          font-size: 40px; }
+        .App__header__hamburger__link-list li {
+          list-style: none;
+          text-decoration: none;
+          margin-top: 5px;
+          margin-bottom: 5px; }
+        .App__header__hamburger__link-list a {
+          font-size: 24px;
+          color: #F9F9F9;
+          text-decoration: none; }
+          .App__header__hamburger__link-list a:visited {
+            color: #F9F9F9; }
     @media (max-width: 1024px) {
       .App__header__nav {
         display: none; } }

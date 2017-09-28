@@ -11,6 +11,7 @@ class App extends Component {
   componentDidMount() {
     // Set the initial component state
     this.setState({
+      isSidebarOpen: false,
       siteJson: false,
       error: false
     });
@@ -37,15 +38,27 @@ class App extends Component {
     return urlTitle;
   }
 
-  showSettings (event) {
-    event.preventDefault();
+  closeSidebar() {
+    this.setState({
+      isSidebarOpen: false
+    })
   }
 
   // Function called to display the DOM
   render() {
+
+    // Return nothing if no state
+    if(!this.state) {
+      return (
+        <div>
+          Loading...
+        </div>
+      )
+    }
+
     // Create a div containing our error if we have one
     let error;
-    if(this.state && this.state.error) {
+    if(this.state.error) {
       error = (
         <div className="error">
           {this.state.error}
@@ -61,7 +74,7 @@ class App extends Component {
     let sayonaraEntries = [];
 
     // Check if we have the site
-    if(this.state && this.state.siteJson) {
+    if(this.state.siteJson) {
 
       // Set our title in the header
       sayonaraTitle = (
@@ -73,7 +86,11 @@ class App extends Component {
         // Add a link to the entry
         sayonaraEntryLinks.push((
           <li key={this.getHashLinkFromTitle(entry.title)}>
-            <a href={this.getHashLinkFromTitle(entry.title, true)}>{entry.title}</a>
+            <a className="menu-item"
+              onClick={() => this.closeSidebar()}
+              href={this.getHashLinkFromTitle(entry.title, true)}>
+              {entry.title}
+            </a>
           </li>
         ));
 
@@ -94,12 +111,24 @@ class App extends Component {
       <div className="App">
         <header className="App__header">
           <div className="App__header__hamburger">
-            <img src={hamburger} className="App__header__hamburger__button" alt="logo" />
-            <Menu>
-              <a id="home" className="menu-item" href="/">Home</a>
-              <a id="about" className="menu-item" href="/about">About</a>
-              <a id="contact" className="menu-item" href="/contact">Contact</a>
-              <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+            <img src={hamburger}
+              className="App__header__hamburger__button" alt="logo"
+              onClick={() => {
+                this.setState({
+                  isSidebarOpen: true
+                });
+              }}
+              />
+            <Menu isOpen={this.state.isSidebarOpen}>
+              <nav>
+                <ul className="App__header__hamburger__link-list">
+                  <li className="App__header__hamburger__link-list__close"
+                    onClick={() => this.closeSidebar()}>
+                    X
+                  </li>
+                  {sayonaraEntryLinks}
+                </ul>
+              </nav>
             </Menu>
           </div>
           <img src={logo} className="App__logo" alt="logo" />
