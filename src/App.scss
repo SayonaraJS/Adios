@@ -8,7 +8,9 @@
 }
 
 @include block('App') {
-  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+
 
   @include element('header') {
     @extend .center-children-vertical;
@@ -17,6 +19,22 @@
     min-height: 50px;
     padding: 20px;
     color: $inverse;
+
+    @include element('hamburger') {
+      @include smq__all-desktop() {
+        display: none;
+      }
+      position: relative;
+
+      @include element('button') {
+      }
+    }
+
+    @include element('nav') {
+      @include smq__all-mobile() {
+        display: none;
+      }
+    }
 
     @include element('link-list') {
       @extend .center-children-vertical;
@@ -55,5 +73,12 @@
 
   @include element('intro') {
     font-size: large;
+  }
+
+  @include element('entries') {
+    padding-left: 10px;
+    padding-right: 10px;
+    word-wrap: break-word;
+    overflow-x: none;
   }
 }

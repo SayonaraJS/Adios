@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import ScrollableAnchor from 'react-scrollable-anchor';
+import { slide as Menu } from 'react-burger-menu';
 import logo from './logo.svg';
+import hamburger from './hamburger.svg';
 import Sayonara from './services/sayonara';
 
 
@@ -32,6 +35,10 @@ class App extends Component {
       return `#${urlTitle}`
     }
     return urlTitle;
+  }
+
+  showSettings (event) {
+    event.preventDefault();
   }
 
   // Function called to display the DOM
@@ -73,9 +80,10 @@ class App extends Component {
         // Add the section and html
         sayonaraEntries.push((
           <section key={this.getHashLinkFromTitle(entry.title)}>
-            <h1 id={this.getHashLinkFromTitle(entry.title)}
-              className="App__entries__entry-title">{entry.title}
-            </h1>
+            <ScrollableAnchor id={this.getHashLinkFromTitle(entry.title)}>
+              <h1 className="App__entries__entry-title">{entry.title}
+              </h1>
+            </ScrollableAnchor>
             <div dangerouslySetInnerHTML={{__html: entry.content}}></div>
           </section>
         ))
@@ -85,9 +93,18 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App__header">
+          <div className="App__header__hamburger">
+            <img src={hamburger} className="App__header__hamburger__button" alt="logo" />
+            <Menu>
+              <a id="home" className="menu-item" href="/">Home</a>
+              <a id="about" className="menu-item" href="/about">About</a>
+              <a id="contact" className="menu-item" href="/contact">Contact</a>
+              <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+            </Menu>
+          </div>
           <img src={logo} className="App__logo" alt="logo" />
           {sayonaraTitle}
-          <nav>
+          <nav className="App__header__nav">
             <ul className="App__header__link-list">
               {sayonaraEntryLinks}
             </ul>

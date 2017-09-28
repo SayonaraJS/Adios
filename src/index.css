@@ -76,20 +76,28 @@
   color: red; }
 
 .App {
-  text-align: center; }
+  width: 100%;
+  word-wrap: break-word; }
   .App__header {
     flex-wrap: wrap;
     background-color: #222;
     min-height: 50px;
     padding: 20px;
     color: #F9F9F9; }
+    .App__header__hamburger {
+      position: relative; }
+      @media (min-width: 1024px) {
+        .App__header__hamburger {
+          display: none; } }
+    @media (max-width: 1024px) {
+      .App__header__nav {
+        display: none; } }
     .App__header__link-list {
       padding-left: 0px;
       margin: 0px; }
       .App__header__link-list li {
         display: inline;
         min-width: 100px;
-        height: 100px;
         text-decoration: none;
         margin-left: 5px;
         margin-right: 5px; }
@@ -106,6 +114,11 @@
     margin-left: 10px; }
   .App__intro {
     font-size: large; }
+  .App__entries {
+    padding-left: 10px;
+    padding-right: 10px;
+    word-wrap: break-word;
+    overflow-x: none; }
 
 body {
   margin: 0;
