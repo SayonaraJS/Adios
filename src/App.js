@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ScrollableAnchor from 'react-scrollable-anchor';
+import { configureAnchors } from 'react-scrollable-anchor';
 import { slide as Menu } from 'react-burger-menu';
 import logo from './logo.svg';
 import hamburger from './hamburger.svg';
@@ -9,6 +10,10 @@ import Sayonara from './services/sayonara';
 class App extends Component {
 
   componentDidMount() {
+
+    // configure our scrolling
+    configureAnchors({offset: -110, scrollDuration: 400});
+
     // Set the initial component state
     this.setState({
       isSidebarOpen: false,
@@ -139,12 +144,13 @@ class App extends Component {
             </ul>
           </nav>
         </header>
-        <p className="App__intro">
-          Welcome the SayonaraJS Client, Adios!
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        {error}
         <main className="App__entries">
+          {error}
+          <p className="App__intro">
+            Welcome the SayonaraJS Client, Adios!
+            To get started, edit <code>src/App.js</code> and save to reload.
+          </p>
+
           {sayonaraEntries}
         </main>
       </div>

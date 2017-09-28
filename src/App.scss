@@ -14,6 +14,10 @@
 
   @include element('header') {
     @extend .center-children-vertical;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     flex-wrap: wrap;
     background-color: #222;
     min-height: 50px;
@@ -33,7 +37,7 @@
       .bm-overlay {
         top: 0;
         left: 0;
-        background-color: $transparent-50 !important;
+        background-color: $transparent-75 !important;
       }
 
       .bm-menu-wrap {
@@ -63,10 +67,11 @@
           text-decoration: none;
           margin-top: 5px;
           margin-bottom: 5px;
+          padding-left: 10px;
         }
 
         a {
-          font-size: 24px;
+          font-size: 7vw;
           color: $inverse;
           text-decoration: none;
 
@@ -119,13 +124,26 @@
   }
 
   @include element('intro') {
+    padding-top: 75px;
     font-size: large;
   }
 
   @include element('entries') {
+    padding-top: 25px;
     padding-left: 10px;
     padding-right: 10px;
     word-wrap: break-word;
     overflow-x: none;
+
+    @include element('entry-title') {
+      text-align: center;
+      margin-top: 0px;
+      padding-top: 0.83em;
+    }
+
+    @include element('entry') {
+      padding-top: 0.83em;
+      padding-bottom: 0.83em;
+    }
   }
 }

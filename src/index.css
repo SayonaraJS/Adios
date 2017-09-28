@@ -79,6 +79,10 @@
   width: 100%;
   word-wrap: break-word; }
   .App__header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     flex-wrap: wrap;
     background-color: #222;
     min-height: 50px;
@@ -94,7 +98,7 @@
       .App__header__hamburger .bm-overlay {
         top: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.5) !important; }
+        background-color: rgba(0, 0, 0, 0.75) !important; }
       .App__header__hamburger .bm-menu-wrap {
         top: 0;
         left: 0;
@@ -112,9 +116,10 @@
           list-style: none;
           text-decoration: none;
           margin-top: 5px;
-          margin-bottom: 5px; }
+          margin-bottom: 5px;
+          padding-left: 10px; }
         .App__header__hamburger__link-list a {
-          font-size: 24px;
+          font-size: 7vw;
           color: #F9F9F9;
           text-decoration: none; }
           .App__header__hamburger__link-list a:visited {
@@ -143,12 +148,21 @@
     font-size: 16px;
     margin-left: 10px; }
   .App__intro {
+    padding-top: 75px;
     font-size: large; }
   .App__entries {
+    padding-top: 25px;
     padding-left: 10px;
     padding-right: 10px;
     word-wrap: break-word;
     overflow-x: none; }
+    .App__entries__entry-title {
+      text-align: center;
+      margin-top: 0px;
+      padding-top: 0.83em; }
+    .App__entries__entry {
+      padding-top: 0.83em;
+      padding-bottom: 0.83em; }
 
 body {
   margin: 0;
